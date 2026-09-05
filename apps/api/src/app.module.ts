@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { env } from './config';
 import { PrismaModule } from './modules/prisma/prisma.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { PrismaModule } from './modules/prisma/prisma.module';
       secret: env.JWT_ACCESS_SECRET,
       signOptions: { expiresIn: '7d' },
     }),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
